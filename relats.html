@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/app.css">
 
-    <title>API Google Maps | JQuery AJAX</title>
+    <title>JSON | JavaScript AJAX</title>
   </head>
   <body>
     <!-- NAVBAR
@@ -27,17 +27,17 @@
           <li class="nav-item">
             <a class="nav-link" href="index.html">Llibres</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="relats.html">Llistar relats</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="relats.html">Llistar relats <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="authors.html">Autors</a>
           </li>
-          <li class="nav-item dropdown active">
+          <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">APIS</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="flickr.html">Flickr</a>
-              <a class="dropdown-item active" href="maps.html">Google Maps <span class="sr-only">(current)</span></a>
+              <a class="dropdown-item" href="maps.html">Google Maps</a>
             </div>
           </li>
         </ul>
@@ -50,8 +50,9 @@
       <div class="container">
         <div class="row">
           <div class="col">
-            <h1>API Google Maps (JQuery)</h1>
-            <p>Geolocalitzar la situació geogràfica dels autors en un mapa de Google Maps.</p>
+            <h1>JSON (JavaScript)</h1>
+            <h2>Llistat de relats</h2>
+            <p>Mostrar els relats a partir d'un JSON.</p>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container -->
