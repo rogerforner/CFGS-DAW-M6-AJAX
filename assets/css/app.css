@@ -1,3 +1,15 @@
+html,
+body {
+  height: 100%;
+}
+
+/* Fem que el contingut del cos ocupi el 100% de la pantalla per tal de dur al
+fons el peu de pàgina (footer).
+En l'operació es resta l'altura del Navbar + la del Footer = 278px. */
+main#contingut {
+  min-height: calc(100vh - 278px);
+}
+
 /* OCULTAR PARTS */
 .hidden-xs-up {
   display: none !important;

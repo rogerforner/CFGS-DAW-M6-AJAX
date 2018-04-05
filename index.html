@@ -8,13 +8,13 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/app.css">
-    
+
     <title>TXT | JavaScript AJAX</title>
   </head>
   <body>
     <!-- NAVBAR
     ---------------->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="index.html">AJAX</a>
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarTogglerClient" aria-controls="navbarTogglerClient" aria-expanded="false" aria-label="Toggle navigation">
         <span class="icon-bar top-bar"></span>
@@ -27,7 +27,7 @@
           <li class="nav-item active">
             <a class="nav-link" href="index.html">Llibres <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="authors.html">Autors</a>
           </li>
           <li class="nav-item dropdown">
@@ -43,13 +43,47 @@
 
     <!-- CONTINGUT
     ---------------->
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <h1>Mostrar .txt amb JavaScript AJAX</h1>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container -->
+    <main id="contingut" class="my-5">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h1>.txt (JavaScript)</h1>
+            <h2>Llibres (versió llarga (comprat) i curta)</h2>
+            <p>Mostrar el .txt curt (short) per defecte i el .txt llarg quan s'hagi realitzat una compra simulada.</p>
+
+            <h2>Formulari (modal)</h2>
+            <p>Afegir un formulari de compra en un modal. Validar la compra?</p>
+
+            <!-- Botó modals -->
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
+              Formulari
+            </button>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </main>
+
+    <!-- MODALS
+    ---------------->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Pagament</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel·lar</button>
+            <button type="button" class="btn btn-dark">Pagar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- FOOTER
     ---------------->
