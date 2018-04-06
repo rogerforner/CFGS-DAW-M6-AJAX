@@ -1,7 +1,8 @@
 /*******************************************************************************
 # Validar
-# Modal
+# Processar AJAX
 # Relat Llarg
+# Modal
 *******************************************************************************/
 
 /*
@@ -11,7 +12,7 @@ $(function() {
   // Seleccionem el formulari a partir de la seva ID.
   // Seleccionem el div on mostrarem missatges a partir de la seva ID.
   var form = $('#ajax-form');
-  var formMessages = $('#form-messages');
+  var formMessages = $('#form-missatge');
 
   // Creem un event listener per capturar el submit del formulari.
   $(form).submit(function(event) {
@@ -25,41 +26,49 @@ $(function() {
     $.ajax({
       type: 'POST',
       url: $(form).attr('action'), // <form action="mailer.php">
-      data: formData // Enviem les dades emmagatzemades.
+      data: formData, // Enviem les dades emmagatzemades.
+      dataType: 'json'
     })
     // Tot ha anat bé...
     .done(function(response) {
       // Afegim la classe desitjada al div emprat per informar.
       // Mostrem el contingut del missatge.
-      $(formMessages).removeClass('error');
-      $(formMessages).addClass('success');
-      $(formMessages).text(response);
+      $(formMessages).removeClass('alert-warning');
+      $(formMessages).addClass('alert-success');
+      $(formMessages).text(response.missatge);
 
-      // Buidem els camps del formulari.
-      $('#email').val('');
-      $('#password').val('');
-      $('#llibre').val('');
-      $('#abonar').val('');
+      processaDades(response);
     })
     // Error...
     .fail(function(data) {
       // Afegim la classe desitjada al div emprat per informar.
-      $(formMessages).removeClass('success');
-      $(formMessages).addClass('error');
+      $(formMessages).removeClass('alert-success');
+      $(formMessages).addClass('alert-warning');
 
       // Mostrem el contingut del missatge.
       if (data.responseText !== '') {
-          $(formMessages).text(data.responseText);
+        $(formMessages).text(data.responseText);
       } else {
-          $(formMessages).text('Oops! Ha succeït un error i el missatge no s\'ha pogut enviar...');
+        $(formMessages).text("Oops! El missatge no s'ha pogut enviar...");
       }
     });
   });
 });
 
 /*
-# Modal
+# Processar AJAX
 *******************************************************************************/
+function processaDades(response) {
+  if (response.titol == "Gulliver's Travels") {
+    gulliversTravels(response);
+  } else if (response.titol == "Time and the Gods") {
+    timeAndTheGods(response);
+  } else if (response.titol == "A Princess of Mars") {
+    PrincessOfMars(response);
+  } else {
+    TheWarOfTheWorlds(response);
+  }
+}
 
 /*
 # Relat Llarg
@@ -67,15 +76,34 @@ $(function() {
 /*
 Gulliver's Travels
 ------------------------------------------------------------------------------*/
+function gulliversTravels(response) {
+
+}
 
 /*
 Time and the Gods
 ------------------------------------------------------------------------------*/
+function timeAndTheGods(response) {
+
+}
 
 /*
 A Princess of Mars
 ------------------------------------------------------------------------------*/
+function PrincessOfMars(response) {
+
+}
 
 /*
 The War of the Worlds
 ------------------------------------------------------------------------------*/
+function TheWarOfTheWorlds(response) {
+
+}
+
+/*
+# Modal
+*******************************************************************************/
+function modalTextLlarg(titol, autor, tipus, text) {
+
+}
