@@ -1,7 +1,6 @@
 /*******************************************************************************
 # Validar
 # Processar AJAX
-# Relat Llarg
 # Modal
 *******************************************************************************/
 
@@ -59,51 +58,63 @@ $(function() {
 # Processar AJAX
 *******************************************************************************/
 function processaDades(response) {
+  // Dades del llibre.
+  var titol;
+  var autor;
+  var tipus;
+  var rutaTxt;
+
+  // Segons el llibre les variables tindran unes dades determinades.
   if (response.titol == "Gulliver's Travels") {
-    gulliversTravels(response);
+    var titol   = response.titol;
+    var autor   = response.autor;
+    var tipus   = response.tipus;
+    var rutaTxt = "relats/f-gullivers-travels-into-several-remote-regions-of-the-world-short.txt";
+
+    // Cridem la funció que obrirà el modal de lectura.
+    modalTextLlarg(titol, autor, tipus, rutaTxt);
+
   } else if (response.titol == "Time and the Gods") {
-    timeAndTheGods(response);
+    var titol   = response.titol;
+    var autor   = response.autor;
+    var tipus   = response.tipus;
+    var rutaTxt = "relats/f-time-and-the-gods-short.txt";
+
+    // Cridem la funció que obrirà el modal de lectura.
+    modalTextLlarg(titol, autor, tipus, rutaTxt);
+
   } else if (response.titol == "A Princess of Mars") {
-    PrincessOfMars(response);
+    var titol   = response.titol;
+    var autor   = response.autor;
+    var tipus   = response.tipus;
+    var rutaTxt = "relats/sf-a-princess-of-mars-short.txt";
+
+    // Cridem la funció que obrirà el modal de lectura.
+    modalTextLlarg(titol, autor, tipus, rutaTxt);
+
+  } else if (response.titol == "The War of the Worlds") {
+    var titol   = response.titol;
+    var autor   = response.autor;
+    var tipus   = response.tipus;
+    var rutaTxt = "relats/sf-the-war-of-the-worlds-short.txt";
+
+    // Cridem la funció que obrirà el modal de lectura.
+    modalTextLlarg(titol, autor, tipus, rutaTxt);
   } else {
-    TheWarOfTheWorlds(response);
+    // No res...
   }
-}
-
-/*
-# Relat Llarg
-*******************************************************************************/
-/*
-Gulliver's Travels
-------------------------------------------------------------------------------*/
-function gulliversTravels(response) {
-
-}
-
-/*
-Time and the Gods
-------------------------------------------------------------------------------*/
-function timeAndTheGods(response) {
-
-}
-
-/*
-A Princess of Mars
-------------------------------------------------------------------------------*/
-function PrincessOfMars(response) {
-
-}
-
-/*
-The War of the Worlds
-------------------------------------------------------------------------------*/
-function TheWarOfTheWorlds(response) {
-
 }
 
 /*
 # Modal
 *******************************************************************************/
-function modalTextLlarg(titol, autor, tipus, text) {
-
+function modalTextLlarg(titol, autor, tipus, rutaTxt) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("resumPrincess").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", rutaTxt, true);
+  xhttp.send();
 }
