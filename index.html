@@ -52,7 +52,7 @@
           <div class="col">
             <h1>Llibres</h1>
             <button type="button" class="btn btn-dark btn-lg btn-block my-3" data-toggle="modal" data-target="#exampleModalFormulari">
-              Comprar
+              Versió completa
             </button>
             <div class="card-deck">
               <!-- Llibre -->
@@ -62,6 +62,8 @@
                   <!-- Títol -->
                   <h5 class="card-title">Gulliver's Travels</h5>
                   <h6 class="card-subtitle mb-2 text-muted">Jonathan Swift</h6>
+                  <!-- Etiquetes -->
+                  <span class="badge badge-secondary mb-2">Fantasia</span>
                   <!-- Descripció -->
                   <p class="card-text text-justify">Gulliver's Travels was published in 1726; and, although it was by no means intended for them, the book was soon appropriated by...</p>
                   <!-- Botó modals -->
@@ -77,6 +79,8 @@
                   <!-- Títol -->
                   <h5 class="card-title">Time and the Gods</h5>
                   <h6 class="card-subtitle mb-2 text-muted">Lord Dunsany</h6>
+                  <!-- Etiquetes -->
+                  <span class="badge badge-secondary mb-2">Fantasia</span>
                   <!-- Descripció -->
                   <p class="card-text text-justify">These tales are of the things that befell gods and men in Yarnith, Averon, and Zarkandhu, and in the other countries of my dreams.</p>
                   <!-- Botó modals -->
@@ -92,6 +96,8 @@
                   <!-- Títol -->
                   <h5 class="card-title">A Princess of Mars</h5>
                   <h6 class="card-subtitle mb-2 text-muted">Edgar Rice Burroughs</h6>
+                  <!-- Etiquetes -->
+                  <span class="badge badge-secondary mb-2">Ciència-ficció</span>
                   <!-- Descripció -->
                   <p class="card-text text-justify">In submitting Captain Carter's strange manuscript to you in book form, I believe that a few words relative to this remarkable personality will...</p>
                   <!-- Botó modals -->
@@ -107,6 +113,8 @@
                   <!-- Títol -->
                   <h5 class="card-title">The War of the Worlds</h5>
                   <h6 class="card-subtitle mb-2 text-muted">H. G. Wells</h6>
+                  <!-- Etiquetes -->
+                  <span class="badge badge-secondary mb-2">Ciència-ficció</span>
                   <!-- Descripció -->
                   <p class="card-text text-justify">No one would have believed in the last years of the nineteenth century that this world was being watched keenly and closely by...</p>
                   <!-- Botó modals -->
@@ -115,7 +123,10 @@
                   </button>
                 </div>
               </div><!-- /.card -->
-            </div><!-- /.card-columns -->
+            </div><!-- /.card-deck -->
+            <button type="button" class="btn btn-dark btn-lg btn-block my-3" data-toggle="modal" data-target="#exampleModalFormulari">
+              Versió completa
+            </button>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container -->
@@ -128,17 +139,45 @@
       <div class=" modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Pagament</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Abonament</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            ...
+            <div id="form-messages"></div>
+            <form id="ajax-form" method="post" action="mailer.php">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="email">Email</label>
+                  <input type="email" name="email" class="form-control" id="email" value="marco@polo.com" placeholder="Email">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="password">Password</label>
+                  <input type="password" name="password" class="form-control" id="password" value="123456" placeholder="Password">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-8">
+                  <label for="llibre">Relat</label>
+                  <select name="llibre" id="llibre" class="form-control">
+                    <option value="0">Seleccionar un llibre...</option>
+                    <option value="gulliver" selected>Gulliver's Travels</option>
+                    <option value="time">Time and the Gods</option>
+                    <option value="princess">A Princess of Mars</option>
+                    <option value="worlds">The War of the Worlds</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="abonar">Abonar >= 2€</label>
+                  <input type="number" name="preu" class="form-control" id="abonar" value="3">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-dark btn-lg btn-block mt-3">Abonar</button>
+            </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel·lar</button>
-            <button type="button" class="btn btn-dark">Pagar</button>
           </div>
         </div>
       </div>
@@ -271,10 +310,11 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- Activitat -->
     <script src="assets/js/llibres.js" charset="utf-8"></script>
+    <script src="assets/js/formulari.js" charset="utf-8"></script>
   </body>
 </html>
