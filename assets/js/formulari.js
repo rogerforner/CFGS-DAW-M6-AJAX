@@ -1,11 +1,12 @@
 /*******************************************************************************
-# Validar
+# Validar (jQuery)
 # Processar AJAX
-# Modal
+# Modal + Text llarg (JavaScript)
 *******************************************************************************/
 
 /*
-# Validar
+# Validar (jQuery)
+Validar el formulari amb jQuery AJAX.
 *******************************************************************************/
 $(function() {
   // Seleccionem el formulari a partir de la seva ID.
@@ -32,6 +33,7 @@ $(function() {
     .done(function(response) {
       // Afegim la classe desitjada al div emprat per informar.
       // Mostrem el contingut del missatge.
+      $(formMessages).removeClass('d-none');
       $(formMessages).removeClass('alert-warning');
       $(formMessages).addClass('alert-success');
       $(formMessages).text(response.missatge);
@@ -41,6 +43,7 @@ $(function() {
     // Error...
     .fail(function(data) {
       // Afegim la classe desitjada al div emprat per informar.
+      $(formMessages).removeClass('d-none');
       $(formMessages).removeClass('alert-success');
       $(formMessages).addClass('alert-warning');
 
@@ -69,7 +72,7 @@ function processaDades(response) {
     var titol   = response.titol;
     var autor   = response.autor;
     var tipus   = response.tipus;
-    var rutaTxt = "relats/f-gullivers-travels-into-several-remote-regions-of-the-world-short.txt";
+    var rutaTxt = "relats/f-gullivers-travels-into-several-remote-regions-of-the-world.txt";
 
     // Cridem la funció que obrirà el modal de lectura.
     modalTextLlarg(titol, autor, tipus, rutaTxt);
@@ -78,7 +81,7 @@ function processaDades(response) {
     var titol   = response.titol;
     var autor   = response.autor;
     var tipus   = response.tipus;
-    var rutaTxt = "relats/f-time-and-the-gods-short.txt";
+    var rutaTxt = "relats/f-time-and-the-gods.txt";
 
     // Cridem la funció que obrirà el modal de lectura.
     modalTextLlarg(titol, autor, tipus, rutaTxt);
@@ -87,7 +90,7 @@ function processaDades(response) {
     var titol   = response.titol;
     var autor   = response.autor;
     var tipus   = response.tipus;
-    var rutaTxt = "relats/sf-a-princess-of-mars-short.txt";
+    var rutaTxt = "relats/sf-a-princess-of-mars.txt";
 
     // Cridem la funció que obrirà el modal de lectura.
     modalTextLlarg(titol, autor, tipus, rutaTxt);
@@ -96,7 +99,7 @@ function processaDades(response) {
     var titol   = response.titol;
     var autor   = response.autor;
     var tipus   = response.tipus;
-    var rutaTxt = "relats/sf-the-war-of-the-worlds-short.txt";
+    var rutaTxt = "relats/sf-the-war-of-the-worlds.txt";
 
     // Cridem la funció que obrirà el modal de lectura.
     modalTextLlarg(titol, autor, tipus, rutaTxt);
@@ -106,15 +109,35 @@ function processaDades(response) {
 }
 
 /*
-# Modal
+# Modal + Text llarg (JavaScript)
+Només es demana emprar Ajax JavaScript amb el text llarg.
 *******************************************************************************/
 function modalTextLlarg(titol, autor, tipus, rutaTxt) {
+  // Text llarg (AJAX JavaScript).
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("resumPrincess").innerHTML = this.responseText;
+      document.getElementById("cosTextLlarg").innerHTML = this.responseText;
     }
   };
   xhttp.open("GET", rutaTxt, true);
   xhttp.send();
+
+  // Info del llibre.
+  document.getElementById("textLlarg").innerHTML = titol;
+  document.getElementById("autorTextLlarg").innerHTML = autor;
+  document.getElementById("tipusTextLlarg").innerHTML = tipus;
+
+  // Ocultem el modal del formulari.
+  // Esperem 2 segons per a que ens doni temps de veure el missatge de confirmació.
+  setTimeout(
+  function() {
+    $('#exampleModalFormulari').modal('hide');
+
+    // Eliminem el missatge de confirmació.
+    $('#form-missatge').addClass('d-none');
+  }, 2000);
+
+  // Obrim el modal que conté tota la informació.
+  $('#exampleModalTextLlarg').modal();
 }

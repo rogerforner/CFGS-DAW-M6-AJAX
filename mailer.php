@@ -34,8 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // A banda de validar el formulari, tornarem alguna informació de més.
-
-
     // Assignem les dades al seu índex corresponent.
     if ($llibre == "gulliver") {
         $dades['titol']    = "Gulliver's Travels";

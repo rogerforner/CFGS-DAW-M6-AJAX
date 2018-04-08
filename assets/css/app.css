@@ -123,3 +123,9 @@ footer.bigfoot #copyright-designer hr {
     font-size: smaller;
   }
 }
+
+/* TEXTOS SCROLL */
+div.scroll {
+  overflow: auto;
+  max-height: 500px;
+}
