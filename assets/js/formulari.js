@@ -1,7 +1,7 @@
 /*******************************************************************************
 # Validar (jQuery)
 # Processar AJAX
-# Modal + Text llarg (JavaScript)
+# # Modal + Text llarg (JavaScript)
 *******************************************************************************/
 
 /*
@@ -16,7 +16,7 @@ $(function() {
 
   // Creem un event listener per capturar el submit del formulari.
   $(form).submit(function(event) {
-    // Evitem que el navegador envie el submit.
+    // Evitem que el navegador enviï el submit.
     event.preventDefault();
 
     // Obtenim les dades del formulari i les guardem en "formData".

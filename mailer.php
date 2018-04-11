@@ -21,12 +21,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
+    // Comrpovar si el preu és un número.
     if (!is_numeric($preu)) {
         http_response_code(400);
         echo " Oops! El preu introduït no és un número, revisa'l...";
         exit;
     }
 
+    // Comrpovar si s'ha seleccionat un llibre.
     if ($llibre == "0") {
         http_response_code(400);
         echo " Oops! Has de seleccionar un llibre!";
@@ -57,6 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $dades['missatge'] = "Tot ha sortit bé!";
     }
 
+    // Definir el format de les dades a enviar i enviar-les.
     header('Content-type: application/json');
     echo json_encode($dades);
 } else {
