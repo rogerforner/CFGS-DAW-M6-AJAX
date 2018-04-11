@@ -1,7 +1,7 @@
 /*******************************************************************************
 # Validar (jQuery)
 # Processar AJAX
-# Modal + Text llarg (JavaScript)
+# # Modal + Text llarg (JavaScript)
 *******************************************************************************/
 
 /*
@@ -16,7 +16,7 @@ $(function() {
 
   // Creem un event listener per capturar el submit del formulari.
   $(form).submit(function(event) {
-    // Evitem que el navegador envie el submit.
+    // Evitem que el navegador enviï el submit.
     event.preventDefault();
 
     // Obtenim les dades del formulari i les guardem en "formData".
@@ -61,7 +61,8 @@ $(function() {
 # Processar AJAX
 *******************************************************************************/
 function processaDades(response) {
-  // Dades del llibre.
+  // Creem unes variables per emmgatzemar les dades, corresponents als relats,
+  // que van incloses en la resposta AJAX.
   var titol;
   var autor;
   var tipus;
@@ -113,17 +114,29 @@ function processaDades(response) {
 Només es demana emprar Ajax JavaScript amb el text llarg.
 *******************************************************************************/
 function modalTextLlarg(titol, autor, tipus, rutaTxt) {
-  // Text llarg (AJAX JavaScript).
+  // Crear l'objecte XMLHttpRequest(), necessari per poder obtenir dades i
+  // mostrar-les sense la necessitat de recarregar la pàgina.
   var xhttp = new XMLHttpRequest();
+
+  // onreadystatechange ens permet cridar l'objecte quan quanvia la propietat
+  // readyState.
+  // "this.readyState == 4" Sol·licitud finalitzada i la resposta està preparada.
+  // "this.status == 200" Resposta del servidor "OK".
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+      // Obtenim un element del DOM amb id="cosTextLlarg" i hi inserim el
+      // contingut de la resposta xhttp = XMLHttpRequest();
+      // El contingut serà el contingut del fitxer .txt.
       document.getElementById("cosTextLlarg").innerHTML = this.responseText;
     }
   };
+  // Per obtenir el contingut del fitxer .txt hem de definir la ruta fins aquest.
+  // Especifiquem la sol·licitud open(method, urlUbicacioFitxer, async).
   xhttp.open("GET", rutaTxt, true);
+  // Enviem la sol·licitud al servidor.
   xhttp.send();
 
-  // Info del llibre.
+  // Hi inserim les dades dintre dels elememts del modal.
   document.getElementById("textLlarg").innerHTML = titol;
   document.getElementById("autorTextLlarg").innerHTML = autor;
   document.getElementById("tipusTextLlarg").innerHTML = tipus;

@@ -155,16 +155,19 @@
             <!-- Formulari -->
             <form id="ajax-form" method="post" action="mailer.php">
               <div class="form-row">
+                <!-- Correu electrònic -->
                 <div class="form-group col-md-6">
                   <label for="email">Email</label>
                   <input type="email" name="email" class="form-control" id="email" value="marco@polo.com" placeholder="Email">
                 </div>
+                <!-- Clau d'accés -->
                 <div class="form-group col-md-6">
                   <label for="password">Password</label>
                   <input type="password" name="password" class="form-control" id="password" value="123456" placeholder="Password">
                 </div>
               </div>
               <div class="form-row">
+                <!-- Llistat de relats -->
                 <div class="form-group col-md-8">
                   <label for="llibre">Relat</label>
                   <select name="llibre" id="llibre" class="form-control">
@@ -175,11 +178,13 @@
                     <option value="worlds">The War of the Worlds</option>
                   </select>
                 </div>
+                <!-- Abonament -->
                 <div class="form-group col-md-4">
                   <label for="abonar">Abonar >= 2€</label>
                   <input type="number" name="preu" class="form-control" id="abonar" value="3">
                 </div>
               </div>
+              <!-- Enviar formulari -->
               <button type="submit" class="btn btn-dark btn-lg btn-block mt-3">Abonar</button>
             </form>
           </div>
