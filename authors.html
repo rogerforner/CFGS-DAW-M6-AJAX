@@ -11,7 +11,7 @@
 
     <title>XML | JavaScript AJAX</title>
   </head>
-  <body>
+  <body onload="loadDoc()">
     <!-- NAVBAR
     ---------------->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -53,6 +53,8 @@
             <h1>XML (JavaScript)</h1>
             <h2>Informació autors</h2>
             <p>Mostrar informació dels autors partint d'un fitxer .xml.</p>
+            <input class="form-control" id="myInput" type="text" placeholder="Search..">
+            <table id="demo" class="table table-bordered table-striped"></table>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container -->
@@ -108,5 +110,44 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+    function loadDoc() {
+      var xhttp = new XMLHttpRequest();
+
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          myFunction(this);
+        }
+      };
+      xhttp.open("GET", "relats/cd_catalog.xml", true);
+      xhttp.send();
+    }
+    function myFunction(xml) {
+      var i;
+      var xmlDoc = xml.responseXML;
+      var table="<thead><tr><th>Nom</th><th>Cognom</th><th>Naixement</th><th>Descripcio</th></tr></thead>";
+      var x = xmlDoc.getElementsByTagName("AUTOR");
+      for (i = 0; i <x.length; i++) {
+        table += "<tr><td>" +
+        x[i].getElementsByTagName("NOM")[0].childNodes[0].nodeValue +
+        "</td><td>" +
+        x[i].getElementsByTagName("COGNOM")[0].childNodes[0].nodeValue +
+        "</td><td>" +
+        x[i].getElementsByTagName("NAIXEMENT")[0].childNodes[0].nodeValue +
+        "</td><td>" +
+        x[i].getElementsByTagName("DESCRIPCIO")[0].childNodes[0].nodeValue +
+        "</td></tr>";
+      }
+      document.getElementById("demo").innerHTML = table;
+    }
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#demo tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+    </script>
   </body>
 </html>

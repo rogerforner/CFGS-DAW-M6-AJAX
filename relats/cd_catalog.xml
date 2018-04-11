@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CATALOG>
+  <AUTOR>
+    <NOM>Jonathan</NOM>
+    <COGNOM>Swift</COGNOM>
+    <NAIXEMENT>30/11/1667</NAIXEMENT>
+    <DESCRIPCIO>Swift es probablement l'escriptor sat ric en prosa m s important en l'idioma angl s, i  s menys conegut per la seva poesia. Swift originalment va publicar totes les seves obres sota pseud nim o b  de manera an nima</DESCRIPCIO>
+  </AUTOR>
+  <AUTOR>
+		<NOM>Lord</NOM>
+		<COGNOM>Dunsany</COGNOM>
+		<NAIXEMENT>25/10/1878</NAIXEMENT>
+		<DESCRIPCIO>Va ser un escriptor i dramaturg anglo-irland s, conegut sobretot pels seus contes fant stics publicats sota el NOM de Lord Dunsany. La seva obra, la qual gira al voltant de l'alta fantasia, l'horror i que  s estrany.</DESCRIPCIO>
+	</AUTOR>
+  <AUTOR>
+		<NOM>Herbert</NOM>
+		<COGNOM>George Wells</COGNOM>
+		<NAIXEMENT>21/07/</NAIXEMENT>
+		<DESCRIPCIO>Es famoso por sus novelas de ciencia ficci n y es considerado, junto a Julio Verne, uno de los precursores de este g nero. Sus novelas, junto con las de  ste, fueron la inspiraci n del ingeniero aeroespacial Wernher von Braun.</DESCRIPCIO>
+	</AUTOR>
+	<AUTOR>
+		<NOM>Edgar</NOM>
+		<COGNOM>Rice Burroughs</COGNOM>
+		<NAIXEMENT>01/07/1950</NAIXEMENT>
+		<DESCRIPCIO>Va ser un escriptor de g nere fant stic c lebre per les seves s ries d'hist ries de Barsoom.</DESCRIPCIO>
+	</AUTOR>
+</CATALOG>
