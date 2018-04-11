@@ -112,22 +112,29 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script>
     function loadDoc() {
+      //Creem la variable per a llegir el fitxer
       var xhttp = new XMLHttpRequest();
 
+      /*Quant el fitxer estigui preparat per a ser llegit s'executarà*/
       xhttp.onreadystatechange = function() {
+        //Si s'ha llegit correctament cridarem la funció per a crear la taula
         if (this.readyState == 4 && this.status == 200) {
           myFunction(this);
         }
       };
-      xhttp.open("GET", "relats/cd_catalog.xml", true);
-      xhttp.send();
+      xhttp.open("GET", "relats/cd_catalog.xml", true);//Fitxer a llegir
+      xhttp.send();//Enviem el fitxer
     }
     function myFunction(xml) {
-      var i;
-      var xmlDoc = xml.responseXML;
-      var table="<thead><tr><th>Nom</th><th>Cognom</th><th>Naixement</th><th>Descripcio</th></tr></thead>";
+
+      var xmlDoc = xml.responseXML;//Variable pasada per parametre l'afegim dintre d'aquesta
+      //Variable per a crear la taula
+      var table="<thead><tr><th>Nom</th><th>Cognom</th><th>Naixement</th><th>Descripció</th></tr></thead>";
+      //Afegim l'identificador AUTOR que es l'etiqueta principal del fitxer XML
       var x = xmlDoc.getElementsByTagName("AUTOR");
-      for (i = 0; i <x.length; i++) {
+      /*Cada vegada que hi ha un Autor s'executa el bucle*/
+      for (var i = 0; i <x.length; i++) {
+        /*Afegim les etiquetes NOM, COGNOM, NAIXEMENT i DESCRIPCIO a la taula*/
         table += "<tr><td>" +
         x[i].getElementsByTagName("NOM")[0].childNodes[0].nodeValue +
         "</td><td>" +
@@ -138,6 +145,7 @@
         x[i].getElementsByTagName("DESCRIPCIO")[0].childNodes[0].nodeValue +
         "</td></tr>";
       }
+      /*Afegim la taula al div demo*/
       document.getElementById("demo").innerHTML = table;
     }
     $(document).ready(function(){
