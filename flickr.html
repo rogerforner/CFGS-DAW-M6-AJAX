@@ -52,6 +52,9 @@
           <div class="col">
             <h1>API Flickr (JQuery)</h1>
             <p>Mostrar imatges de ciència ficció i fantasia de Flickr.</p>
+            <div class="" id="photos">
+
+            </div>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container -->
@@ -104,8 +107,24 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+$(document).ready(function(){
+    var url = "http://api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=?&tags=scifi&tagmode=all";
+
+    $.getJSON(url, function(data){
+      var html = "";
+      $.each(data.items, function(i, item){
+        html += "<h2>" + item.title + "</h2>";
+        html += "<img class='img-thumbnail' src=" + item.media.m + ">";
+        html += "<p></p>";
+      });
+      $("#photos").html(html);
+    });
+      });
+  </script>
   </body>
 </html>
