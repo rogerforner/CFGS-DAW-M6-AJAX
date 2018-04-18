@@ -135,25 +135,28 @@
   </body>
   <script>
   $(document).ready(function(){
-    var marker;
+    var marker;//variable per a marcar al mapa
     var geocoder = new google.maps.Geocoder();
-    var myLatLng = new google.maps.LatLng(33.4936111, -117.1475);
-    var mapOptions = {zoom: 8, center: myLatLng, mapTypeId: google.maps.MapTypeId.ROADMAP}
-    var map = new google.maps.Map($("#googleMap").get(0), mapOptions);
+    var myLatLng = new google.maps.LatLng(33.4936111, -117.1475); //Coordenaddes perdefecte
+    var mapOptions = {zoom: 8, center: myLatLng, mapTypeId: google.maps.MapTypeId.ROADMAP} //Variable per a guardar la configuracio del mapa
+    var map = new google.maps.Map($("#googleMap").get(0), mapOptions);//Afegim la configuració dintre del mapa creat per id
 
+    //Quant es clica algun link s'executa
     $("#links a").click(function() {
-      var address = $(this).attr("id");
-      var missatge =$(this).text();
+      var address = $(this).attr("id");//agafem le nom del atribut del id i el guardem
+      var missatge =$(this).text();//agafem el text del link i el guaardem
       if (marker) { marker.setMap(null); }
+      /*A traves del nom de l'adreça google ens rediregeix cap alli*/
       geocoder.geocode({address: address}, function(results) {
           marker = new google.maps.Marker({
             position: results[0].geometry.location,
             map: map
           });
-        var infoWindow = new google.maps.InfoWindow({
-
+          /*Obrim una finestra amb la adreça i el missatge*/
+          var infoWindow = new google.maps.InfoWindow({
           content: missatge+" <h3>" + address + "</h3>"}
           );
+          /*Actualitzem el mapa amb el nou mapa i amb el marcador*/
           infoWindow.open(map, marker);
         });
     });
