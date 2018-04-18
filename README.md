@@ -7,3 +7,11 @@
 * Jordi Simó
 * Enric Beltran
 * Roger Forner
+
+# Publicar a GitHub Pages
+
+```
+$ git checkout gh-pages
+$ git rebase master
+$ git push origin gh-pages
+$ git checkout master
